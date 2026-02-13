@@ -1,13 +1,15 @@
 
 
 import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import ProductSection from '../components/ProductSection'
 
 function LandingPage() {
   return (
     <div>
-     <Link to="/">Home</Link> <br />
-     <Link to="/dashboard">Dashboard</Link> <br />
-     <Link to="/login">Login</Link>
+     <Navbar />
+
+     <ProductSection />
     </div>
   )
 }

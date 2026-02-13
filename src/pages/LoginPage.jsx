@@ -1,5 +1,3 @@
-
-
 import { Button, Form, Input, Alert } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
@@ -8,7 +6,6 @@ function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [form] = Form.useForm();
-
 
   const onFinish = (values) => {
     setLoading(true);
@@ -19,7 +16,7 @@ function LoginPage() {
       }
     })
       .then((response) => {
-        console.log(response)
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.message);
@@ -27,7 +24,6 @@ function LoginPage() {
       })
       .finally(() => {
         setLoading(false);
-
       })
   };
 
