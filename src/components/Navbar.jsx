@@ -29,14 +29,14 @@ export default function Navbar() {
                         <Link to="/" className="hover:text-indigo-600 transition">Products</Link>
                         <Link to="/" className="hover:text-indigo-600 transition">Categories</Link>
 
-                        <Link to="/login" onClick={() => authCtx.setIsLogin(true)} className="flex items-center gap-1 hover:text-indigo-600 transition">
+                        <Link to="/login" className="flex items-center gap-1 hover:text-indigo-600 transition">
                             <LogIn size={18} /> Login
                         </Link>
 
                         {
-                            (authCtx.isLogin == false) ? <Link  to="/" className="flex items-center gap-1 hover:text-indigo-600 transition">
+                            (authCtx.isLogin == false) ? <Link to="/" className="flex items-center gap-1 hover:text-indigo-600 transition">
                                 <UserPlus size={18} /> Register
-                            </Link> : <Link onClick={() => authCtx.setIsLogin(false)} to="/" className="flex items-center gap-1 hover:text-indigo-600 transition">
+                            </Link> : <Link  to="/" className="flex items-center gap-1 hover:text-indigo-600 transition">
                                 <UserPlus size={18} /> Logout
                             </Link>
                         }

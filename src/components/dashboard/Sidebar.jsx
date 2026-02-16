@@ -5,13 +5,17 @@ import {
   MessageSquare,
   Settings,
   PackagePlus,
-  PackageSearch
+  PackageSearch,
+  LogOut
 } from "lucide-react";
+import { useContext } from "react";
 
 import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Sidebar() {
   const location = useLocation();
+  const authCtx = useContext(AuthContext);
 
   const activeClass = "bg-blue-100 text-blue-600";
   const normalClass = "text-gray-600 hover:bg-gray-100";
@@ -72,7 +76,7 @@ export default function Sidebar() {
           className={`flex items-center gap-3 px-4 py-2 rounded-lg transition 
           ${location.pathname === "/help" ? activeClass : normalClass}`}
         >
-          <HelpCircle size={18} />
+          <LogOut size={18} />
           <span>Help Center</span>
         </Link>
 
@@ -88,12 +92,12 @@ export default function Sidebar() {
 
         {/* Settings */}
         <Link
-          to="/settings"
+          onClick={ () => authCtx.logout() }
           className={`flex items-center gap-3 px-4 py-2 rounded-lg transition 
           ${location.pathname === "/settings" ? activeClass : normalClass}`}
         >
-          <Settings size={18} />
-          <span>Settings</span>
+          <LogOut size={18} />
+          <span>Logout</span>
         </Link>
 
       </nav>

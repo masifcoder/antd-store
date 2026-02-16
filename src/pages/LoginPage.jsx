@@ -1,33 +1,19 @@
 import { Button, Form, Input, Alert, Typography } from "antd";
-import axios from "axios";
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const { Title, Text } = Typography;
 
 function LoginPage() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [form] = Form.useForm();
+  const authCtx = useContext(AuthContext);
+
+  console.log(authCtx);
 
   const onFinish = (values) => {
-    setLoading(true);
-    setError(null);
+    
+    authCtx.loginUser(values);
 
-    axios
-      .post("https://antd-store-backend.vercel.app/user/login", values, {
-        headers: {
-          "x-student-id": "masif",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(() => {
-        setError("Login failed. Email or password is incorrect.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
   };
 
   return (
@@ -72,20 +58,22 @@ function LoginPage() {
             <Input.Password size="large" placeholder="Enter your password" />
           </Form.Item>
 
-          {error && (
+         <div className="mb-3">
+           {authCtx.error && (
             <Alert
-              message={error}
+              message={authCtx.error}
               type="error"
               showIcon
               className="mb-4"
             />
           )}
+         </div>
 
           <Form.Item>
             <Button
               type="primary"
               htmlType="submit"
-              loading={loading}
+              loading={authCtx.loading}
               size="large"
               className="w-full !h-12 !rounded-xl !bg-gradient-to-r !from-indigo-500 !to-pink-500 !border-0 hover:!opacity-90"
             >
