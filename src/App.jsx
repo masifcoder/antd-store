@@ -6,6 +6,7 @@ import NotfoundPage from "./pages/NotfoundPage";
 import Dashboard from './pages/Dashboard';
 import ProductsPage from "./pages/ProductsPage";
 import CreateProductPage from "./pages/CreateProductPage";
+import DashboardHome from './pages/DashboardHome';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/dashboard' element={<Dashboard />} >
+            <Route index element={<DashboardHome />} />
             <Route path='products' element={<ProductsPage />} />
             <Route path='create' element={<CreateProductPage />} />
         </Route>
