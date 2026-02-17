@@ -1,6 +1,10 @@
 import { Bell, Search } from "lucide-react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Topbar() {
+  const authCtx = useContext(AuthContext);
+
   return (
     <div className="bg-white border-b border-b-slate-200 px-6 py-4 flex justify-between items-center">
       <h1 className="text-xl font-semibold">Dashboard</h1>
@@ -26,7 +30,7 @@ export default function Topbar() {
             className="w-9 h-9 rounded-full"
           />
           <div className="hidden md:block">
-            <p className="text-sm font-medium">Akash Bonk</p>
+            <p className="text-sm font-medium">{authCtx.user}</p>
             <p className="text-xs text-gray-500">Admin</p>
           </div>
         </div>

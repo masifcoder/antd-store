@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
                 console.log(response);
                 // save token in local storage
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", response.data.user);
                 setUser(response.data.user);
             })
             .catch(() => {
@@ -47,6 +48,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
 
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         setUser(null);
     }
 
@@ -55,8 +57,10 @@ export const AuthProvider = ({ children }) => {
     useEffect( () => {
         
         let token = localStorage.getItem("token");
+        let userName  = localStorage.getItem("user");
         console.log(token)
-        if(token !== null && user !== null) {
+        if(token !== null && userName !== null) {
+            setUser(userName);
             return navigate("/dashboard");
 
         } else {
