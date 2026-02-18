@@ -10,6 +10,8 @@ function CreateProductPage() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+
+  // on finish function
   const onFinish = async (values) => {
     setLoading(true);
     // console.log(values);
