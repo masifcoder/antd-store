@@ -52,7 +52,7 @@ export default function ProductSection() {
 
                 {/* Section Title */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold">Best Seller Product</h2>
+                    <h2 className="text-3xl font-bold">Best Seller Product, Pick one you like</h2>
                     {
                         (authCtx.isLogin == true ) ? <h3>Welcome Ali</h3> :  <h3>Welcome Guest</h3>
                     }
